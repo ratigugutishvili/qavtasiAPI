@@ -4,8 +4,11 @@ const Sales = require('./modules/sales');
 app = express()
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080
+const corsOpt = {
+    origin: "https://qavtasi.ge",
+};
 
-
+app.use(cors(corsOpt));
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 require('./db')
