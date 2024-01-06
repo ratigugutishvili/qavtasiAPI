@@ -4,9 +4,7 @@ const Sales = require('./modules/sales');
 app = express()
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080
-const corsOpt = {
-    origin: "http://localhost:3000",
-};
+
 
 app.use(cors(corsOpt));
 app.use(express.json())
