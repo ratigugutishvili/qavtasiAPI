@@ -49,5 +49,5 @@ app.delete('/delete/:expenseId', async (req,res)=>{
 
 
 app.listen(port,()=>{
-    console.log('running'+ port);
+    console.log('runningg'+ port);
 })
