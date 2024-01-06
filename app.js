@@ -3,16 +3,25 @@ const cors = require("cors");
 const Sales = require('./modules/sales');
 app = express()
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 8080
-const corsOpt = {
-    origin: "https://qavtasi.ge",
+const port = process.env.PORT || 8080;
+
+const allowedOrigins = ['http://localhost:3000', 'https://qavtasi.ge'];
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type',
 };
 
-app.use(cors(corsOpt));
-app.use(express.json())
-app.use(bodyParser.urlencoded({extended:true}))
-require('./db')
-
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+require('./db');
 app.get('/sales', async (req,res)=>{
     const sales = await Sales.find()
     // console.log(sales);
@@ -20,18 +29,7 @@ app.get('/sales', async (req,res)=>{
     res.json({sales:sales})
 })
 
-app.use((req, res, next) => {
-    const allowedOrigins = ['http://localhost:3000', 'https://qavtasi.ge'];
-    const origin = req.headers.origin;
-  
-    if (allowedOrigins.includes(origin)) {
-      res.header('Access-Control-Allow-Origin', origin);
-    }
-  
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-  });
+
 
 app.post('/newsale',(req,res)=>{
     const { name ,city, mobile ,email,value,adress } = req.body
