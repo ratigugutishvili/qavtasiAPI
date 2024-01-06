@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080
 
 
-app.use(cors(corsOpt));
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
 require('./db')
