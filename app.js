@@ -5,7 +5,7 @@ app = express()
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 
-const allowedOrigins = ['http://localhost:3000', 'https://qavtasi.ge'];
+const allowedOrigins = ['https://qavtasi.ge'];
 const corsOptions = {
     origin: function (origin, callback) {
         if (allowedOrigins.includes(origin)) {
