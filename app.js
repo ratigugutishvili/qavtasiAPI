@@ -5,18 +5,13 @@ app = express()
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 
-const allowedOrigins = ['https://qavtasi.ge'];
+
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: '*',
     methods: 'GET, POST, PUT, DELETE',
-    allowedHeaders: 'Content-Type',
+    // allowedHeaders: 'Content-Type',
 };
+
 
 app.use(cors(corsOptions));
 app.use(express.json());
