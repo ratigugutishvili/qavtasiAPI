@@ -37,6 +37,10 @@ app.post('/newsale',(req,res)=>{
     res.status(200)
 })
 
+app.get('/',(req,res)=>{
+    res.status(200)
+    res.json({message:'ok'})
+})
 
 app.delete('/delete/:expenseId', async (req,res)=>{
     const salename = req.params.expenseId
