@@ -17,11 +17,14 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require('./db');
+
+
+
 app.get('/sales', async (req,res)=>{
-    const sales = await Sales.find()
+    // const sales = await Sales.find()
     // console.log(sales);
     res.status(200)
-    res.json({sales:sales})
+    res.json({sales:"rasrasr"})
 })
 
 
