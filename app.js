@@ -6,14 +6,14 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 
 
-// const corsOptions = {
-//     origin: '*',
-//     methods: 'GET, POST, PUT, DELETE',
-//     // allowedHeaders: 'Content-Type',
-// };
+const corsOptions = {
+    origin: '*',
+    methods: 'GET, POST, PUT, DELETE',
+    // allowedHeaders: 'Content-Type',
+};
 
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require('./db');
