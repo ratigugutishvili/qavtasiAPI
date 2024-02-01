@@ -24,7 +24,7 @@ app.get('/sales', async (req,res)=>{
     const sales = await Sales.find()
     console.log(sales);
     res.status(200)
-    res.json({sales:"rasrasr"})
+    res.json({sales:sales})
 })
 
 
